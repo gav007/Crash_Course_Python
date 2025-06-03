@@ -1,6 +1,6 @@
 pizza = {
-'crust': 'thick',
-'toppings': ['mushrooms', 'extra cheese'],
+'crust': 'thin',
+'toppings': ['mushrooms', 'extra cheese', 'pineapple'],
 }
 
 print(f"So you want a {pizza['crust']} pizza")
