@@ -1,0 +1,31 @@
+# Start program
+# Set alien_color to 'green', 'yellow', or 'red'
+
+import random
+
+# List of possible alien colors
+alien_colors = ['green', 'yellow', 'red']
+
+# Randomly select an alien color
+alien_color = random.choice(alien_colors)
+
+# If alien_color equals 'green'
+if alien_color == 'green':
+    print("Player earned 5 points")
+# Else if alien_color equals 'yellow'
+elif alien_color == 'yellow':
+    print("Player earned 10 points")
+# Else
+else:
+    print("Player earned 15 points")
+
+# Test each alien_color value separately to check correct output
+for color in alien_colors:
+    print(f"\nTesting with color: {color}")
+    if color == 'green':
+        print("Player earned 5 points")
+    elif color == 'yellow':
+        print("Player earned 10 points")
+    else:
+        print("Player earned 15 points")
+# End program

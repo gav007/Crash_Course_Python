@@ -1,18 +1,20 @@
-is_a_digit = False
-user_input = input("Enter you number: ")
+# Ask the user for how many Fibonacci numbers they want
+n = int(input("How many Fibonacci numbers would you like to generate? "))
 
-while is_a_digit == False:
-    if user_input.isdigit():
-        user_input = int(user_input)
-        is_a_digit = True
-    else:
-        print("Please enter a valid number")
-        user_input = input("Enter you number: ")
-        
+# Handle small inputs
+if n <= 0:
+    print("Please enter a positive integer.")
+elif n == 1:
+    fib_sequence = [0]
+else:
+    # Start with the first two Fibonacci numbers
+    fib_sequence = [0, 1]
+    
+    # Generate Fibonacci numbers from 2 up to n-1
+    for i in range(2, n):
+        next_number = fib_sequence[i-1] + fib_sequence[i-2]
+        fib_sequence.append(next_number)
 
-n = 0
-m = 1
-fib = n + m
-
-#for i in range(0, n+1):
-
+# Print the resulting Fibonacci sequence
+print(f"First {n} Fibonacci numbers:")
+print(fib_sequence)
