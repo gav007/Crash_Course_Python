@@ -1,7 +1,7 @@
 from youtube_transcript_api import YouTubeTranscriptApi
 
 # Replace with your video ID (the part after "v=" in the URL)
-video_id = "nwf-rVuCEkU"
+video_id = "XvbVePuP7NY"
 
 # Fetch the transcript
 transcript = YouTubeTranscriptApi.get_transcript(video_id)

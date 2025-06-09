@@ -8,20 +8,14 @@ MAX_RETRIES = 3     # Max retries for transcript fetching
 MAX_CHUNK_LENGTH = 10000  # Max characters per chunk for summarization
 
 def get_transcript(video_id):
-    """Fetch transcript with retries and language support."""
-    for attempt in range(MAX_RETRIES):
-        try:
-            transcript = YouTubeTranscriptApi.get_transcript(
-                video_id,
-                languages=['en', 'en-US', 'en-GB']  # Prioritize English variants
-            )
-            print(f"Transcript fetched ({len(transcript)} entries)")
-            return "\n".join(entry['text'] for entry in transcript)
-        except Exception as e:
-            print(f"Attempt {attempt+1} failed: {str(e)}")
-            if attempt == MAX_RETRIES - 1:
-                print("All attempts failed. Returning empty transcript.")
-                return None
+    """Fetch transcript for the given video ID."""
+    try:
+        transcript = YouTubeTranscriptApi.get_transcript(video_id)
+        print(f"Transcript fetched ({len(transcript)} entries)")
+        return "\n".join(entry['text'] for entry in transcript)
+    except Exception as e:
+        print(f"Error fetching transcript: {e}")
+        return None
 
 def chunk_text(text, chunk_size):
     """Split text into chunks respecting natural boundaries."""
@@ -87,15 +81,13 @@ def main():
     transcript = get_transcript(video_id)
     
     if not transcript:
-        print("Failed to fetch transcript.")
+        print("Transcript not available or video ID invalid.")
         return
 
     # Save raw transcript
-    os.makedirs("transcripts", exist_ok=True)
-    transcript_file = f"transcripts/{video_id}_transcript.txt"
-    with open(transcript_file, "w", encoding="utf-8") as f:
+    with open("transcript.txt", "w", encoding="utf-8") as f:
         f.write(transcript)
-    print(f"Transcript saved to {transcript_file}")
+    print("Transcript saved as transcript.txt")
 
     # Generate summary
     print("Generating summary...")
