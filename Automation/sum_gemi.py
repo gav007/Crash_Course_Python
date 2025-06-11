@@ -120,3 +120,10 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+video_id = "--eVtP5oVcU"
+try:
+    transcript = YouTubeTranscriptApi.get_transcript(video_id)
+    print(transcript)
+except Exception as e:
+    print(f"Error: {e}")
