@@ -73,11 +73,58 @@ def multi_speaker_tts(conversation: str, speakers: dict):
 if __name__ == "__main__":
     # Test single speaker
     single_speaker_tts(
-        "Say cheerfully: Have a wonderful day!",
+        "Say cheerfully: Have a Fecking wonderful day!",
         voice_name="Kore"
     )
 
     # Test multi-speaker
-    convo = """Joe: How's it going today, Jane?
-Jane: Not too bad, how about you?"""
+    convo = """Sgt. O’Reilly:3
+Right Joe, let’s not mess about. You know why you’re here.
+
+Joe:
+Yeah — ‘cos me neighbour’s a rat and your lad outside couldn’t tell the difference between a grow lamp and a lava lamp.
+
+Garda McDonagh:
+You were spotted leggin' it out of Lidl with two trolleys full of bacon rashers and twenty packets of Daz. Care to explain that one?
+
+Joe:
+It was a spiritual emergency. I was makin’ a breakfast bap for the ages.
+
+Sgt. O’Reilly:
+You pushed an old lad into the freezer aisle, Joe.
+
+Joe:
+He was blockin’ the puddin’. That’s practically assault on me heritage.
+
+Garda McDonagh:
+And the week before, CCTV caught ya tryin’ to hotwire a Garda van with a curly straw.
+
+Joe:
+Yeah, and if ye didn’t cheap out on ignition systems I’d have been in Galway by lunch.
+
+Sgt. O’Reilly:
+Don’t get smart, ya little bollix.
+
+Joe:
+Can’t help it — every time I’m in here, I gain IQ points from listenin’ to this interrogation technique ye stole from Father Ted reruns.
+
+Garda McDonagh:
+We also found a pigeon in your hoodie, Joe. A live pigeon. Why?
+
+Joe:
+Emotional support bird. Name’s Declan. He’s got anxiety and a vendetta against Luas inspectors.
+
+Sgt. O’Reilly:
+You think this is a joke? We’ve got twenty witnesses sayin’ you started a conga line in the dole office shoutin’ “UP THE RA FOR RENT FREE LIVING!”
+
+Joe:
+That’s not a crime, that’s community engagement. And to be fair, the rhythm was immaculate.
+
+Garda McDonagh:
+Right, that’s enough. Last chance — you plead guilty or we show the judge the footage of you doin’ karaoke in Supermacs at 2am with a traffic cone on your head.
+
+Joe:
+Ah, shite. Alright, guilty on the rashers. But Declan walks free. He’s innocent. And he’s got court anxiety.
+
+[Scene ends with Declan the pigeon shitting on Sgt. O’Reilly’s notebook and Joe gettin’ a three-week community service order — cleanin’ pigeon droppings off Ballymun bus stops.]"""
     multi_speaker_tts(convo, {"Joe": "Kore", "Jane": "Puck"})
