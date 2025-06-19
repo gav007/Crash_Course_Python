@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Age of AI: Your Path to a Transformative Career</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F0F4F8; 
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .kpi-card {
+            background-color: #ffffff;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            text-align: center;
+            border-left: 5px solid #0052CC; 
+        }
+        .flowchart-step {
+            position: relative;
+            padding: 1rem 1.5rem;
+            background-color: #ffffff;
+            border: 2px solid #0052CC;
+            border-radius: 0.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .flowchart-step::after {
+            content: '▼';
+            position: absolute;
+            bottom: -1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #0052CC;
+            font-size: 1.5rem;
+        }
+        .flowchart-step:last-child::after {
+            content: '';
+        }
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2.5rem;
+            padding-left: 2.5rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0.5rem;
+            top: 0.25rem;
+            bottom: 0;
+            width: 2px;
+            background-color: #0052CC;
+        }
+        .timeline-item:last-child::before {
+            display: none;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 0;
+            top: 0.25rem;
+            height: 1.25rem;
+            width: 1.25rem;
+            border-radius: 9999px;
+            background-color: #0052CC;
+            border: 4px solid #F0F4F8;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+        }
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <header class="bg-[#0052CC] text-white p-6 md:p-12 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-2">The Age of AI: Your Path to a Transformative Career</h1>
+        <p class="text-lg md:text-xl max-w-3xl mx-auto text-blue-100">A visual guide to understanding Artificial Intelligence, Machine Learning, and Automation, and launching your career in this dynamic field.</p>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="introduction" class="mb-12">
+            <h2 class="text-3xl font-bold text-center mb-4 text-[#0052CC]">A Technological Revolution is Underway</h2>
+            <p class="text-lg text-center max-w-4xl mx-auto mb-8">Artificial Intelligence (AI), Machine Learning (ML), and Automation are reshaping our world, creating unprecedented opportunities for growth and innovation. This guide demystifies these concepts and provides a clear, actionable roadmap for aspiring professionals.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="kpi-card">
+                    <h3 class="text-4xl font-bold text-[#0065FF] mb-2">40%</h3>
+                    <p class="font-semibold">Increase in Demand</p>
+                    <p class="text-sm text-gray-600">Projected growth for AI/ML specialists from 2023-2027, creating over 1 million new jobs.</p>
+                </div>
+                <div class="kpi-card">
+                    <h3 class="text-4xl font-bold text-[#0065FF] mb-2">$826B</h3>
+                    <p class="font-semibold">AI Market Projection</p>
+                    <p class="text-sm text-gray-600">The anticipated size of the overall AI market by 2030, highlighting explosive growth.</p>
+                </div>
+                <div class="kpi-card">
+                    <h3 class="text-4xl font-bold text-[#0065FF] mb-2">$225B</h3>
+                    <p class="font-semibold">ML Market Projection</p>
+                    <p class="text-sm text-gray-600">The projected size of the Machine Learning market alone by 2030, with a 36.2% CAGR.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="concepts" class="mb-12">
+            <h2 class="text-3xl font-bold text-center mb-8 text-[#0052CC]">Demystifying the Core Concepts</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-5xl mb-4">🧠</div>
+                    <h3 class="text-xl font-bold mb-2">Artificial Intelligence (AI)</h3>
+                    <p class="text-gray-600">The broad science of creating machines that mimic human intelligence. It's the "smart brain" enabling systems to reason, learn, and act.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-5xl mb-4">⚙️</div>
+                    <h3 class="text-xl font-bold mb-2">Machine Learning (ML)</h3>
+                    <p class="text-gray-600">A subset of AI that teaches machines to learn from data. It's the "engine" that improves with experience, without being explicitly programmed.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-5xl mb-4">🤖</div>
+                    <h3 class="text-xl font-bold mb-2">Automation</h3>
+                    <p class="text-gray-600">The technology that performs tasks automatically. When powered by AI/ML, it becomes "intelligent automation" that can adapt and make decisions.</p>
+                </div>
+            </div>
+
+            <div class="mt-10 bg-white p-6 rounded-lg shadow-md md:col-span-2">
+                <h3 class="text-2xl font-bold text-center mb-4 text-[#0052CC]">The Interconnected Trio</h3>
+                <p class="text-center text-gray-600 mb-6">AI, ML, and Automation are best understood as nested concepts. AI is the overall vision, ML is a key technology to achieve it, and Automation is how this intelligence is applied to execute tasks.</p>
+                <div class="chart-container h-80 md:h-96">
+                    <canvas id="relationshipChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="flex justify-center mt-8">
+                <button id="explainConceptBtn" class="bg-[#0052CC] hover:bg-[#0065FF] text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-colors duration-300">
+                    Explain Concept ✨
+                </button>
+            </div>
+
+        </section>
+
+        <section id="ml-types" class="mb-12">
+            <h2 class="text-3xl font-bold text-center mb-8 text-[#0052CC]">Types of Machine Learning</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-2">🎓 Supervised Learning</h3>
+                    <p class="mb-4 text-gray-600">Learning with a "teacher." The algorithm is trained on labeled data with known answers, like a student studying with an answer key. It's used for prediction and classification.</p>
+                    <div class="chart-container h-64">
+                        <canvas id="supervisedChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-2">🗺️ Unsupervised Learning</h3>
+                    <p class="mb-4 text-gray-600">Exploring without a map. The algorithm finds hidden patterns and structures in unlabeled data, such as grouping customers by behavior.</p>
+                    <div class="chart-container h-64">
+                        <canvas id="unsupervisedChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-2">🏆 Reinforcement Learning</h3>
+                    <p class="mb-4 text-gray-600">Learning through trial and error. The system gets rewards for good actions and penalties for bad ones, like training a pet. Ideal for robotics and games.</p>
+                    <div class="flex items-center justify-center h-64">
+                        <div class="text-center">
+                            <span class="text-6xl">🕹️</span>
+                            <p class="font-bold mt-2">Agent</p>
+                            <p class="text-2xl animate-pulse">⇄</p>
+                            <p class="font-bold">Environment</p>
+                            <p class="mt-2 text-sm text-green-500 font-semibold">+ Reward / - Penalty</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="roadmap" class="mb-12">
+            <h2 class="text-3xl font-bold text-center mb-8 text-[#0052CC]">Your Top-Tier Learning Roadmap</h2>
+            <p class="text-lg text-center max-w-4xl mx-auto mb-10">A structured, 10+ month path to guide you from foundational concepts to practical application and career readiness in the world of AI.</p>
+            
+            <div class="md:grid md:grid-cols-4 md:gap-8">
+                <div class="md:col-span-1">
+                    <h3 class="text-2xl font-bold text-center mb-4 text-[#0065FF] hidden md:block">Learning Phases</h3>
+                    <div class="sticky top-8 text-center md:text-left">
+                       <ul class="bg-white p-4 rounded-lg shadow-md space-y-2">
+                           <li><a href="#phase1" class="font-semibold text-gray-700 hover:text-[#0052CC] transition-colors">Phase 1: Foundations</a></li>
+                           <li><a href="#phase2" class="font-semibold text-gray-700 hover:text-[#0052CC] transition-colors">Phase 2: Core ML</a></li>
+                           <li><a href="#phase3" class="font-semibold text-gray-700 hover:text-[#0052CC] transition-colors">Phase 3: Advanced AI</a></li>
+                           <li><a href="#phase4" class="font-semibold text-gray-700 hover:text-[#0052CC] transition-colors">Phase 4: Career Launch</a></li>
+                       </ul>
+                    </div>
+                </div>
+
+                <div class="md:col-span-3 mt-8 md:mt-0">
+                    <div id="phase1" class="mb-12">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <h4 class="text-xl font-bold mb-2">Phase 1: Foundational Pillars <span class="text-sm font-normal text-gray-500">(Months 1-4)</span></h4>
+                            <p class="text-gray-600">Build the bedrock of your knowledge. This phase is non-negotiable for true understanding.</p>
+                            <ul class="mt-4 list-disc list-inside bg-blue-50 p-4 rounded-lg">
+                                <li><strong>Mathematics & Statistics:</strong> Linear Algebra, Calculus, Probability.</li>
+                                <li><strong>Programming Skills:</strong> Python (NumPy, Pandas, Scikit-learn).</li>
+                                <li><strong>Data Fundamentals:</strong> Data Cleaning, Exploratory Data Analysis (EDA).</li>
+                            </ul>
+                        </div>
+                    </div>
+                     <div id="phase2" class="mb-12">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <h4 class="text-xl font-bold mb-2">Phase 2: Mastering Core ML Algorithms <span class="text-sm font-normal text-gray-500">(Months 5-7)</span></h4>
+                            <p class="text-gray-600">Implement and understand the workhorse algorithms of ML.</p>
+                             <ul class="mt-4 list-disc list-inside bg-blue-50 p-4 rounded-lg">
+                                <li><strong>Supervised Learning:</strong> Regression & Classification (Decision Trees, SVMs).</li>
+                                <li><strong>Unsupervised Learning:</strong> Clustering (K-means), Dimensionality Reduction (PCA).</li>
+                                <li><strong>Model Evaluation:</strong> Metrics (Accuracy, Precision, Recall), Cross-validation.</li>
+                            </ul>
+                        </div>
+                    </div>
+                     <div id="phase3" class="mb-12">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <h4 class="text-xl font-bold mb-2">Phase 3: Diving into Advanced AI & Specialization <span class="text-sm font-normal text-gray-500">(Months 8-9)</span></h4>
+                            <p class="text-gray-600">Explore cutting-edge domains and find your niche.</p>
+                             <ul class="mt-4 list-disc list-inside bg-blue-50 p-4 rounded-lg">
+                                <li><strong>Deep Learning:</strong> Neural Networks (CNNs, RNNs), TensorFlow/PyTorch.</li>
+                                <li><strong>Natural Language Processing (NLP):</strong> Sentiment Analysis, Chatbots.</li>
+                                <li><strong>Generative AI & LLMs:</strong> Understand models like ChatGPT.</li>
+                            </ul>
+                        </div>
+                    </div>
+                     <div id="phase4" class="mb-12">
+                         <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <h4 class="text-xl font-bold mb-2">Phase 4: Practical Application & Career Launch <span class="text-sm font-normal text-gray-500">(Month 10+)</span></h4>
+                            <p class="text-gray-600">Translate knowledge into marketable skills and land a job.</p>
+                             <ul class="mt-4 list-disc list-inside bg-blue-50 p-4 rounded-lg">
+                                <li><strong>Model Deployment:</strong> Flask/Django, Cloud Services (AWS, Azure), Docker.</li>
+                                <li><strong>Build a Portfolio:</strong> Create real-world projects on GitHub.</li>
+                                <li><strong>Continuous Learning:</strong> Engage with communities like Kaggle & Reddit.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="careers" class="mb-12">
+            <h2 class="text-3xl font-bold text-center mb-8 text-[#0052CC]">Career Paths in AI, ML & Automation</h2>
+            <p class="text-lg text-center max-w-4xl mx-auto mb-10">The field offers a diverse range of roles, from highly technical to business-focused. Your skills will be in high demand across numerous specializations.</p>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                 <h3 class="text-2xl font-bold text-center mb-4">Top In-Demand Roles</h3>
+                <div class="chart-container h-96">
+                    <canvas id="careerChart"></canvas>
+                </div>
+                <p class="text-center text-sm text-gray-500 mt-4">This chart represents a variety of key job roles in the AI/ML ecosystem, showcasing the breadth of opportunities available, from engineering and data science to ethics and product management.</p>
+            </div>
+        </section>
+        
+        <section id="future-trends" class="mb-12">
+            <h2 class="text-3xl font-bold text-center mb-8 text-[#0052CC]">Future Trends (2025 and Beyond)</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="flowchart-step">
+                    <h3 class="font-bold text-lg">Explainable AI (XAI) & Ethical Governance</h3>
+                    <p class="text-sm text-gray-600">Demand for transparent, fair, and accountable AI systems will become a regulatory and business necessity.</p>
+                </div>
+                <div class="flowchart-step">
+                    <h3 class="font-bold text-lg">Agentic AI & Advanced Automation</h3>
+                    <p class="text-sm text-gray-600">AI agents will autonomously manage complex workflows, moving from task execution to outcome management.</p>
+                </div>
+                 <div class="flowchart-step">
+                    <h3 class="font-bold text-lg">Human-AI Collaboration</h3>
+                    <p class="text-sm text-gray-600">The focus will shift to AI augmenting human intelligence, enhancing productivity and decision-making in partnership.</p>
+                </div>
+                 <div class="flowchart-step">
+                    <h3 class="font-bold text-lg">TinyML & Edge AI</h3>
+                    <p class="text-sm text-gray-600">Powerful ML models will run on small, low-power devices, enabling intelligent IoT applications everywhere.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="text-center p-6 bg-gray-800 text-white">
+        <p>Your journey into the world of AI starts now. Embrace continuous learning and start building!</p>
+    </footer>
+
+    <!-- The Modal -->
+    <div id="explanationModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h2 class="text-2xl font-bold mb-4 text-[#0052CC]">Explain AI/ML Concept ✨</h2>
+            <p class="mb-4 text-gray-700">Enter any AI, ML, or Automation concept to get a simple, analogy-based explanation.</p>
+            <input type="text" id="conceptInput" class="w-full p-2 border border-gray-300 rounded-md mb-4 focus:outline-none focus:ring-2 focus:ring-[#0052CC]" placeholder="e.g., 'Neural Network', 'Reinforcement Learning'">
+            <button id="getExplanationBtn" class="bg-[#0052CC] hover:bg-[#0065FF] text-white font-bold py-2 px-4 rounded-md shadow-md transition-colors duration-300 w-full mb-4">
+                Get Explanation
+            </button>
+            <div id="explanationOutput" class="bg-gray-100 p-4 rounded-md text-gray-800 min-h-[100px] overflow-y-auto">
+                <p class="text-gray-500">Explanation will appear here...</p>
+            </div>
+             <p id="loadingIndicator" class="text-center text-sm text-gray-500 mt-2 hidden">Generating explanation...</p>
+        </div>
+    </div>
+
+    <script>
+        const brilliantBlues = {
+            bg: '#F0F4F8',
+            primary: '#0052CC',
+            secondary: '#0065FF',
+            accent: '#4C9AFF',
+            light: '#B3D4FF',
+            text: '#091E42',
+        };
+
+        const chartTooltipCallback = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                                return label.join(' ');
+                            }
+                            return label;
+                        }
+                    }
+                },
+                legend: {
+                    labels: {
+                        color: brilliantBlues.text,
+                        font: {
+                           size: 14
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    ticks: { color: brilliantBlues.text, beginAtZero: true },
+                    grid: { color: '#e0e0e0' }
+                },
+                x: {
+                    ticks: { color: brilliantBlues.text },
+                    grid: { display: false }
+                }
+            },
+            maintainAspectRatio: false,
+            responsive: true
+        };
+
+        function wrapLabels(label, maxWidth) {
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + ' ' + word).trim().length > maxWidth && currentLine.length > 0) {
+                    lines.push(currentLine);
+                    currentLine = word;
+                } else {
+                    currentLine = (currentLine + ' ' + word).trim();
+                }
+            });
+            if (currentLine) lines.push(currentLine);
+            return lines.length > 1 ? lines : label;
+        }
+
+        new Chart(document.getElementById('relationshipChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Artificial Intelligence (AI)', 'Machine Learning (ML)', 'Intelligent Automation'],
+                datasets: [{
+                    label: 'Relationship',
+                    data: [100, 75, 50],
+                    backgroundColor: [brilliantBlues.primary, brilliantBlues.secondary, brilliantBlues.accent],
+                    borderColor: brilliantBlues.bg,
+                    borderWidth: 4
+                }]
+            },
+            options: {
+                ...chartTooltipCallback,
+                cutout: '50%',
+                scales: {
+                    x: { display: false },
+                    y: { display: false }
+                }
+            }
+        });
+
+        new Chart(document.getElementById('supervisedChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Spam Detection', 'Medical Diagnosis', 'Stock Prediction'],
+                datasets: [{
+                    label: 'Prediction Accuracy',
+                    data: [98, 92, 75],
+                    backgroundColor: brilliantBlues.secondary,
+                }]
+            },
+            options: {
+                ...chartTooltipCallback,
+                 plugins: { ...chartTooltipCallback.plugins, legend: { display: false } },
+                 indexAxis: 'y',
+            }
+        });
+
+        new Chart(document.getElementById('unsupervisedChart'), {
+            type: 'bubble',
+            data: {
+                datasets: [{
+                    label: 'Customer Segments',
+                    data: [
+                        {x: 20, y: 30, r: 15}, {x: 40, y: 60, r: 25}, {x: 80, y: 40, r: 20},
+                        {x: 30, y: 80, r: 18}, {x: 60, y: 20, r: 22}
+                    ],
+                    backgroundColor: brilliantBlues.accent,
+                }]
+            },
+            options: {
+                 ...chartTooltipCallback,
+                 plugins: { ...chartTooltipCallback.plugins, legend: { display: false } },
+                 scales: {
+                    x: { ticks: { display: false }, grid: { display: false } },
+                    y: { ticks: { display: false }, grid: { display: false } }
+                 }
+            }
+        });
+
+        const careerLabels = [
+            'Machine Learning Engineer', 'Data Scientist', 'AI Research Scientist', 
+            'NLP Engineer', 'Computer Vision Engineer', 'Robotics Engineer', 
+            'AI Product Manager', 'AI Ethics Consultant'
+        ].map(label => wrapLabels(label, 16));
+
+        new Chart(document.getElementById('careerChart'), {
+            type: 'bar',
+            data: {
+                labels: careerLabels,
+                datasets: [{
+                    label: 'Relative Demand',
+                    data: [95, 92, 70, 85, 82, 75, 88, 78],
+                    backgroundColor: [
+                        brilliantBlues.primary, brilliantBlues.secondary, brilliantBlues.accent,
+                        brilliantBlues.light, brilliantBlues.primary, brilliantBlues.secondary,
+                        brilliantBlues.accent, brilliantBlues.light
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                ...chartTooltipCallback,
+                plugins: { ...chartTooltipCallback.plugins, legend: { display: false } }
+            }
+        });
+
+        // Modal Logic
+        const explanationModal = document.getElementById('explanationModal');
+        const explainConceptBtn = document.getElementById('explainConceptBtn');
+        const closeButton = document.getElementsByClassName('close-button')[0];
+        const getExplanationBtn = document.getElementById('getExplanationBtn');
+        const conceptInput = document.getElementById('conceptInput');
+        const explanationOutput = document.getElementById('explanationOutput');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+
+        explainConceptBtn.onclick = function() {
+            explanationModal.style.display = 'flex';
+            explanationOutput.innerHTML = '<p class="text-gray-500">Explanation will appear here...</p>'; // Reset output
+            conceptInput.value = ''; // Clear input
+        }
+
+        closeButton.onclick = function() {
+            explanationModal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == explanationModal) {
+                explanationModal.style.display = 'none';
+            }
+        }
+
+        async function getConceptExplanation() {
+            const prompt = conceptInput.value.trim();
+            if (!prompt) {
+                explanationOutput.innerHTML = '<p class="text-red-500">Please enter a concept to explain.</p>';
+                return;
+            }
+
+            loadingIndicator.classList.remove('hidden');
+            explanationOutput.innerHTML = '<p class="text-gray-500">Generating explanation...</p>';
+
+            try {
+                let chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: `Explain the AI/ML/Automation concept "${prompt}" using a simple, easy-to-understand analogy, suitable for someone new to the field. Keep the explanation concise.` }] });
+                const payload = { contents: chatHistory };
+                const apiKey = ""; 
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+                
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const text = result.candidates[0].content.parts[0].text;
+                    explanationOutput.innerHTML = text;
+                } else {
+                    explanationOutput.innerHTML = '<p class="text-red-500">Could not retrieve explanation. Please try again.</p>';
+                }
+            } catch (error) {
+                console.error('Error fetching explanation:', error);
+                explanationOutput.innerHTML = `<p class="text-red-500">An error occurred: ${error.message}. Please try again.</p>`;
+            } finally {
+                loadingIndicator.classList.add('hidden');
+            }
+        }
+
+        getExplanationBtn.onclick = getConceptExplanation;
+
+    </script>
+</body>
+</html>
